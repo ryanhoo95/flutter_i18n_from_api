@@ -5,7 +5,6 @@ import 'label.dart';
 
 class LabelUtil {
   static LabelUtil _instance;
-  static List<Label> _labels = List();
 
   LabelUtil._();
 
