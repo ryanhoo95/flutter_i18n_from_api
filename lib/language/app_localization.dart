@@ -22,7 +22,6 @@ class AppLocalizations {
   List<Label> _labels = List();
 
   Future<bool> load() async {
-    print('load');
     LabelUtil labelUtil = LabelUtil.instance;
     _labels = await labelUtil.getLabels(AppLanguage.currentLanguageCode);
 
@@ -68,5 +67,5 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool shouldReload(_AppLocalizationsDelegate old) => false;
+  bool shouldReload(_AppLocalizationsDelegate old) => true;
 }
