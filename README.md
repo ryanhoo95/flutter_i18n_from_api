@@ -2,6 +2,8 @@
 
 This app demonstrates multi-languages support with Flutter.
 
+Refer [here](https://api.flutter.dev/flutter/flutter_localizations/GlobalMaterialLocalizations-class.html) for all the supported locales in Flutter.
+
 ### Problem Statement
 
 Oftenly, we need to add multiple languages to our app. This could be done in many ways. Mostly, we add the language files in our app. But, what if you want to update certain label in certain page after the app was published to the store. This could waste a lot of time to just update that particular label in your language file, and then republish the app.
@@ -141,6 +143,7 @@ class Label {
 ### 5. Label Util
 
 Create a [label_util.dart](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/lib/language/label_util.dart) to save the raw label data into local file and retrive the list of Label objects based on the selected language.
+
 \***modify the function getLabels(String languageCode) based on your json structure**
 
 ```dart
