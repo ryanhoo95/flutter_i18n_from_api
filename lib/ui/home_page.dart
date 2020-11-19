@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tutorial_i18n_from_api/language/app_language.dart';
 import 'package:tutorial_i18n_from_api/language/app_localization.dart';
-import 'package:tutorial_i18n_from_api/language/language_key.dart';
+import 'package:tutorial_i18n_from_api/language/label_key.dart';
 
 class HomePage extends StatefulWidget {
   @override
