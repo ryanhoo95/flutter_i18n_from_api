@@ -9,6 +9,7 @@ Refer [here](https://api.flutter.dev/flutter/flutter_localizations/GlobalMateria
 Oftenly, we need to add multiple languages to our app. This could be done in many ways. Mostly, we add the language files in our app. But, what if you want to update certain label in certain page after the app was published to the store. This could waste a lot of time to just update that particular label in your language file, and then republish the app.
 
 ### Solution
+
 To solve this issue, we could upload all the labels with their respective key to the server. When the app is launched, we could retrieve all the labels from server and store it in local files. Whenever you want to update the label, we just need to update its value in server.
 
 ### Assumption & Limitation
@@ -18,8 +19,8 @@ To solve this issue, we could upload all the labels with their respective key to
 
 #### Screenshot
 
-| English | Malay | Mandarin |
-| ------  | ------ | ----- | 
+| English                                                                                                                                                                                                                                                             | Malay                                                                                                                                                                                                                                                               | Mandarin                                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <img src="https://user-images.githubusercontent.com/20148969/99642544-980e7280-2a86-11eb-8d53-de43a372ceb3.JPEG" width="120px" /> <img src="https://user-images.githubusercontent.com/20148969/99642585-a0ff4400-2a86-11eb-88bf-d090889f73a5.JPEG" width="120px" /> | <img src="https://user-images.githubusercontent.com/20148969/99642556-9b096300-2a86-11eb-8994-103b60c56ee8.JPEG" width="120px" /> <img src="https://user-images.githubusercontent.com/20148969/99642601-a3fa3480-2a86-11eb-94bf-2be15feee2bb.JPEG" width="120px" /> | <img src="https://user-images.githubusercontent.com/20148969/99642567-9e045380-2a86-11eb-97e7-3a8f8ba76730.JPEG" width="120px" /> <img src="https://user-images.githubusercontent.com/20148969/99642609-a6f52500-2a86-11eb-8e46-9e044ee98a0d.JPEG" width="120px" /> |
 
 [Sample APK](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/sample_apk/flutter_i18n.apk)
@@ -29,10 +30,11 @@ To solve this issue, we could upload all the labels with their respective key to
 ### 1. Dependencies
 
 Add the following dependencies to [pubspec.yaml](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/pubspec.yaml):
--  [flutter_localizations](https://flutter.dev/docs/development/accessibility-and-localization/internationalization) -> to support multi-languages
--  [shared_preferences](https://pub.dev/packages/shared_preferences) -> to save current app language used by the user
--  [path_provider](https://pub.dev/packages/path_provider) -> to save the raw labels retrived from API in local file
--  [provider](https://pub.dev/packages/provider) -> notify the app to update the UI accordingly whenever user switch app language
+
+- [flutter_localizations](https://flutter.dev/docs/development/accessibility-and-localization/internationalization) -> to support multi-languages
+- [shared_preferences](https://pub.dev/packages/shared_preferences) -> to save current app language used by the user
+- [path_provider](https://pub.dev/packages/path_provider) -> to save the raw labels retrived from API in local file
+- [provider](https://pub.dev/packages/provider) -> notify the app to update the UI accordingly whenever user switch app language
 
 ```yaml
 dependencies:
@@ -106,7 +108,7 @@ Create a [MockApi](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/maste
 
 Create a [label_key.dart](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/lib/language/label_key.dart) to save all the label key.
 
-*Hint: use for loop to print out all the key when your app have tons of labels* :smile:
+_Hint: use for loop to print out all the key when your app have tons of labels_ :smile:
 
 ```dart
 const Greeting_Message = 'Greeting_Message';
@@ -359,6 +361,7 @@ class _AppLocalizationsDelegate
 ### 7. Main
 
 In [main.dart](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/lib/main.dart):
+
 1. We have to pass an instance AppLanguage object to MyApp widget.
 2. Wrap MaterialApp widget with ChangeNotifierProvider of AppLanguage.
 3. Add the supported locales to MaterialApp widget.
@@ -422,9 +425,9 @@ class MyApp extends StatelessWidget {
 
 ### 8. Splash Screen
 
-In [splash_screen.dart](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/lib/ui/splash_screen.dart), 
+In [splash_screen.dart](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/lib/ui/splash_screen.dart),
 
-1. We mock the API call by calling _getLabel() in initState().
+1. We mock the API call by calling \_getLabel() in initState().
 2. The raw json data is then stored in local file.
 3. Retrieve the saved language code from shared preference.
 4. Change the app language.
@@ -469,9 +472,10 @@ void _getLabel() {
 ### 9. Home Page
 
 In [home_page.dart](https://github.com/ryanhoo95/flutter_i18n_from_api/blob/master/lib/ui/home_page.dart),
+
 1. Declare a variable of type AppLanguage and initialize it from Provider.
-   
-   *Timer.run() was used to ensure the initialization is done after the widget is completely inited.*
+
+   _Timer.run() was used to ensure the initialization is done after the widget is completely inited._
 
 ```dart
 AppLanguage _appLanguage;
@@ -491,8 +495,8 @@ void initState() {
 
 2. Add Text widget to display the label by using the label key.
 
-   *Since translate(String key) might return null value, so we have to consider null-safety coding.*
-   
+   _Since translate(String key) might return null value, so we have to consider null-safety coding._
+
 ```dart
 Text(
   AppLocalizations.of(context).translate(Greeting_Message) ??
@@ -553,5 +557,4 @@ MaterialButton(
 ),
 ```
 
-## That's all. Thank you.
-
+## That's all. Thank you..
